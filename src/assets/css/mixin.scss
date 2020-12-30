@@ -1,0 +1,41 @@
+//上下左右居中
+@mixin center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+//左右居中
+@mixin leftCenter {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+//上下居中
+@mixin topCenter {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin wh($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin sizeColor($size, $color) {
+    font-size: $size;
+    color: $color;
+}
+
+@mixin flex($justify:flex-start,$align:center) {
+    display:flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin textOverFlow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
