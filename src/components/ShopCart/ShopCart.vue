@@ -1,7 +1,7 @@
 <!--
  * @Author: 黄灿民
  * @Date: 2020-12-29 22:32:58
- * @LastEditTime: 2020-12-30 21:38:26
+ * @LastEditTime: 2021-01-01 18:11:25
  * @LastEditors: 黄灿民
  * @Description: 悬浮购物车组件
  * @FilePath: \app\src\components\ShopCart\ShopCart.vue
@@ -11,7 +11,7 @@
     @mouseenter="changeHideState"
     :class="isHide ? 'shop-cart shop-cart-hide' : 'shop-cart'"
   >
-    <router-link :to="{ name: '' }">
+    <router-link :to="{ name: 'shopcartlist' }">
       <div class="icon-shop">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-gouwuche"></use>

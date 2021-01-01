@@ -1,7 +1,7 @@
 /*
  * @Author: 黄灿民
  * @Date: 2020-12-05 14:50:48
- * @LastEditTime: 2021-01-01 10:26:08
+ * @LastEditTime: 2021-01-01 18:11:08
  * @LastEditors: 黄灿民
  * @Description: 
  * @FilePath: \app\src\router\index.js
@@ -78,6 +78,14 @@ const routes = [
     path: '/recommenddetail',
     name: 'recommenddetail',
     component: () => import('@/views/Merchant/ShopDetail/RecommendDetail/RecommendDetail.vue')
+  },
+  {
+    path: '/shopcartlist',
+    name: 'shopcartlist',
+    component: () => import('@/views/Merchant/ShopCartList.vue'),
+    meta: {
+      auth: true
+    }
   },
   {
     path: '/login',

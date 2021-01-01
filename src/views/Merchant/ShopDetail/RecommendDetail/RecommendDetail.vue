@@ -1,7 +1,7 @@
 <!--
  * @Author: 黄灿民
  * @Date: 2020-12-27 20:13:38
- * @LastEditTime: 2020-12-30 21:14:21
+ * @LastEditTime: 2021-01-01 19:50:38
  * @LastEditors: 黄灿民
  * @Description: 推荐套餐详情
  * @FilePath: \app\src\views\Merchant\ShopDetail\RecommendDetail\RecommendDetail.vue
@@ -145,6 +145,8 @@ export default {
           specs: [1],
           stock: this.recommendItem.rating_count,
           image_path: this.recommendItem.image_path,
+          count:1,
+          isSelect:true,
         },
       ];
       const result = await checkout(geohash, entities, restaurant_id);
