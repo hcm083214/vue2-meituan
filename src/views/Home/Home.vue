@@ -1,7 +1,7 @@
 <!--
  * @Author: 黄灿民
  * @Date: 2020-12-05 15:16:19
- * @LastEditTime: 2020-12-21 19:24:44
+ * @LastEditTime: 2021-01-01 14:20:37
  * @LastEditors: 黄灿民
  * @Description: 首页：定位
  * @FilePath: \app\src\views\Home\Home.vue
@@ -19,7 +19,12 @@
       </div>
     </header-top>
     <service-list />
-    <shop-list title="猜你喜欢" :list="shopLists" :marginTop="0.75" :paddingBottom="2"></shop-list>
+    <shop-list
+      title="猜你喜欢"
+      :list="shopLists"
+      :marginTop="0.75"
+      :paddingBottom="2"
+    ></shop-list>
     <footer-bottom></footer-bottom>
   </div>
 </template>
@@ -31,6 +36,7 @@ import ShopList from "@/components/ShopList/ShopList";
 import ServiceList from "@/views/Home/Service";
 import { msiteAddress, shopList } from "@/server/index";
 import { mergeLocation } from "@/assets/js/util.js";
+import { mapState } from "vuex";
 export default {
   name: "Home",
   components: {
@@ -51,6 +57,9 @@ export default {
       async handler() {},
       immediate: true,
     },
+  },
+  computed: {
+    ...mapState(["selectionCityGeo"]),
   },
   methods: {
     async getLocationSuccess({ coords: { latitude, longitude } }) {
@@ -80,7 +89,12 @@ export default {
     if (geo) {
       this.getShopListsData();
       const geoInline = this.$route.params.city;
-      const geoCity = await mergeLocation(geo, geoInline);
+      let geoCity;
+      if (this.selectionCityGeo) {
+        geoCity = this.selectionCityGeo;
+      } else {
+        geoCity = await mergeLocation(geo, geoInline);
+      }
       const address = await msiteAddress(geoCity);
       this.city = address.city;
       if (geoCity == geoInline) {

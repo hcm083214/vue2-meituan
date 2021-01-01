@@ -1,7 +1,7 @@
 /*
  * @Author: 黄灿民
  * @Date: 2020-12-05 14:50:48
- * @LastEditTime: 2020-12-30 21:57:17
+ * @LastEditTime: 2021-01-01 10:26:08
  * @LastEditors: 黄灿民
  * @Description: 
  * @FilePath: \app\src\router\index.js
@@ -35,58 +35,81 @@ const routes = [
     component: Home
   },
   {
-    path:'/location',
-    name:"location",
-    component:() => import(/* webpackChunkName: "group-foo" */ '@/views/Location/Location.vue')
+    path: '/location',
+    name: "location",
+    component: () => import(/* webpackChunkName: "group-foo" */ '@/views/Location/Location.vue')
   },
   {
-    path:'/servicelist',
-    name:'servicelist',
-    component:() => import(/* webpackChunkName: "group-foo" */ '@/views/Merchant/ServiceList.vue')
+    path: '/servicelist',
+    name: 'servicelist',
+    component: () => import(/* webpackChunkName: "group-foo" */ '@/views/Merchant/ServiceList.vue')
   },
   {
-    path:'/shopdetail',
-    name:'shopdetail',
-    component:()=>import('@/views/Merchant/ShopDetail.vue')
+    path: '/shopdetail',
+    name: 'shopdetail',
+    component: () => import('@/views/Merchant/ShopDetail.vue')
   },
   {
-    path:'/takeout',
-    name:'takeout',
-    component:()=>import('@/views/Merchant/TakeOutDetail.vue'),
-    redirect:{
-      name:'menu'
+    path: '/takeout',
+    name: 'takeout',
+    component: () => import('@/views/Merchant/TakeOutDetail.vue'),
+    redirect: {
+      name: 'menu'
     },
-    children:[
+    children: [
       {
-        path:'menu',
-        name:'menu',
-        component:()=>import('@/views/Merchant/TakeOutDetail/Menu.vue')
+        path: 'menu',
+        name: 'menu',
+        component: () => import('@/views/Merchant/TakeOutDetail/Menu.vue')
       },
       {
-        path:'comment',
-        name:'comment',
-        component:()=>import('@/views/Merchant/TakeOutDetail/comment.vue')
+        path: 'comment',
+        name: 'comment',
+        component: () => import('@/views/Merchant/TakeOutDetail/comment.vue')
       }
     ]
   },
   {
-    path:'/shopinfomation',
-    name:'shopinfomation',
-    component:()=>import('@/views/Merchant/ShopDetail/ShopInfomation.vue')
+    path: '/shopinfomation',
+    name: 'shopinfomation',
+    component: () => import('@/views/Merchant/ShopDetail/ShopInfomation.vue')
   },
   {
-    path:'/recommenddetail',
-    name:'recommenddetail',
-    component:()=>import('@/views/Merchant/ShopDetail/RecommendDetail/RecommendDetail.vue')
+    path: '/recommenddetail',
+    name: 'recommenddetail',
+    component: () => import('@/views/Merchant/ShopDetail/RecommendDetail/RecommendDetail.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/Login/Login.vue')
+  },
+  {
+    path: '/resset',
+    name: 'resset',
+    component: () => import('@/views/Login/Resset.vue')
   }
-  
- 
+
+
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.auth) {
+    const userInfo = localStorage.getItem('userInfo');
+    if (userInfo) {
+      next()
+    } else {
+      next(`/login?redirect=${to.fullPath}`)
+    }
+  } else {
+    next();
+  }
 })
 
 export default router

@@ -1,7 +1,7 @@
 /*
  * @Author: 黄灿民
  * @Date: 2020-12-07 16:01:17
- * @LastEditTime: 2020-12-30 21:18:34
+ * @LastEditTime: 2020-12-31 22:42:03
  * @LastEditors: 黄灿民
  * @Description: api接口
  * @FilePath: \app\src\server\index.js
@@ -191,7 +191,7 @@ export async function getRatingList(restaurant_id) {
 }
 
 /**
- * @description: 
+ * @description: 加入购物车
  * @param {string} geohash
  * @param {array} entities
  * @param {number} restaurant_id
@@ -213,5 +213,43 @@ export async function checkout(geohash, entities, restaurant_id) {
         result.push(...entities);
     }
 
+    return result;
+}
+
+/**
+ * @description: 获得图片验证码
+ */
+export async function getcaptchas(){
+   const result = await httpRequest.post('/v1/captchas');
+   return result;
+}
+
+/**
+ * @description: 账号密码登录
+ * @param {*} username
+ * @param {*} password
+ * @param {*} captcha_code
+ * @return {*}
+ */
+export async function accountLogin(username, password, captcha_code){
+    const result = await httpRequest.post('/v2/login',{
+        username, password, captcha_code
+    })
+    return result;
+}
+
+/**
+ * @description: 修改密码
+ * @param {*} username
+ * @param {*} oldpassWord
+ * @param {*} newpassword
+ * @param {*} confirmpassword
+ * @param {*} captcha_code
+ * @return {*}
+ */
+export async function changePassword(username, oldpassWord, newpassword, confirmpassword, captcha_code){
+    const result = await httpRequest.post('/v2/changepassword',{
+        username, oldpassWord, newpassword, confirmpassword, captcha_code
+    })
     return result;
 }

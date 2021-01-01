@@ -1,7 +1,7 @@
 <!--
  * @Author: 黄灿民
  * @Date: 2020-12-05 15:24:33
- * @LastEditTime: 2020-12-20 15:35:23
+ * @LastEditTime: 2021-01-01 14:54:50
  * @LastEditors: 黄灿民
  * @Description: 公共样式，头部组件，后退，搜素，用户常驻，其他通过插槽
  * @FilePath: \app\src\components\Header\HeaderTop.vue
@@ -28,9 +28,19 @@
 
     <section class="navbar-right">
       <div class="info" v-if="user">
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-yonghu"></use>
-        </svg>
+        <div v-if="!userInfo">
+          <router-link :to="{ name: 'login' }">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-yonghu"></use>
+            </svg>
+          </router-link>
+        </div>
+
+        <div class="avatar" v-else>
+          <router-link :to="{ name: '' }">
+            <img :src="`http://elm.cangdu.org/img/${userInfo.avatar}`" alt="" />
+          </router-link>
+        </div>
       </div>
       <slot name="gohome"></slot>
     </section>
@@ -54,6 +64,17 @@ export default {
       default: false,
     },
   },
+  data() {
+    return {
+      userInfo: "",
+    };
+  },
+  mounted() {
+    this.userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  },
+  // computed: {
+  //   ...mapState(["userInfo"]),
+  // },
 };
 </script>
 
@@ -65,7 +86,7 @@ export default {
   z-index: 2020;
   top: 0;
   left: 0;
-  right:0;
+  right: 0;
   background-image: linear-gradient(135deg, #ffd000 0%, #ffbd00 100%);
   @include wh(100vw, 2rem);
   @include flex(space-between);
@@ -90,8 +111,16 @@ export default {
   .navbar-right {
     @include wh(3rem, auto);
     padding-right: 0.75rem;
-    .info{
-      @include flex(flex-end)
+    .info {
+      @include flex(flex-end);
+      .avatar {
+        @include wh(1.25rem, 1.25rem);
+        border-radius: 50%;
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: 黄灿民
  * @Date: 2020-12-07 23:12:57
- * @LastEditTime: 2020-12-25 18:44:47
+ * @LastEditTime: 2021-01-01 15:12:41
  * @LastEditors: 黄灿民
  * @Description: 通用功能函数
  * @FilePath: \app\src\assets\js\util.js
@@ -21,6 +21,7 @@ export function mergeLocation({ geohash, city }, geoInline) {
         } else {
             messageBox(
                 {
+                    type:'confirm',
                     title: `检测到您目前所在城市是${city}`,
                     msg: '是否要切换'
                 },

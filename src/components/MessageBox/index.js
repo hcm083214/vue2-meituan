@@ -1,7 +1,7 @@
 /*
  * @Author: 黄灿民
  * @Date: 2020-12-08 11:32:40
- * @LastEditTime: 2020-12-08 19:55:09
+ * @LastEditTime: 2021-01-01 15:28:46
  * @LastEditors: 黄灿民
  * @Description: 
  * @FilePath: \app\src\components\MessageBox\index.js
@@ -23,7 +23,7 @@ function defaultCallback(action) {
     }
 }
 let cmp;//弹窗组件
-function destroy(){
+function destroy() {
     document.body.removeChild(cmp.$el);
     cmp.$destroy();
 }
@@ -31,7 +31,7 @@ const messageBox = function (options) {
     const props = Object.assign(defaults, options);
     const MBCmp = Vue.extend(messageBoxCmp);
     cmp = new MBCmp().$mount();
-    const cmpOptions = { ...props, defaultCallback,destroy }
+    const cmpOptions = { ...props, defaultCallback, destroy }
     for (const key in cmpOptions) {
         cmp[key] = cmpOptions[key];
     }
