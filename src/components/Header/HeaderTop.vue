@@ -1,7 +1,7 @@
 <!--
  * @Author: 黄灿民
  * @Date: 2020-12-05 15:24:33
- * @LastEditTime: 2021-01-01 14:54:50
+ * @LastEditTime: 2021-01-02 13:51:19
  * @LastEditors: 黄灿民
  * @Description: 公共样式，头部组件，后退，搜素，用户常驻，其他通过插槽
  * @FilePath: \app\src\components\Header\HeaderTop.vue
@@ -37,7 +37,7 @@
         </div>
 
         <div class="avatar" v-else>
-          <router-link :to="{ name: '' }">
+          <router-link :to="{ name: 'user' }">
             <img :src="`http://elm.cangdu.org/img/${userInfo.avatar}`" alt="" />
           </router-link>
         </div>

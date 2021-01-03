@@ -1,7 +1,7 @@
 <!--
  * @Author: 黄灿民
  * @Date: 2021-01-01 18:02:08
- * @LastEditTime: 2021-01-01 20:16:45
+ * @LastEditTime: 2021-01-03 21:14:22
  * @LastEditors: 黄灿民
  * @Description: 购物车列表详情
  * @FilePath: \app\src\views\Merchant\ShopCartList.vue
@@ -49,7 +49,9 @@
       </div>
       <div class="account">
         <span class="total">￥{{ totalPrice }}</span>
-        <button class="btn">结算</button>
+        <router-link :to="{ name: 'shoppayment' }">
+          <button class="btn">结算</button>
+        </router-link>
       </div>
     </footer>
   </section>
@@ -58,6 +60,7 @@
 <script>
 import HeaderTop from "@/components/Header/HeaderTop.vue";
 import { mapState } from "vuex";
+// import { placeOrders } from "@/server/index";
 export default {
   components: { HeaderTop },
   name: "ShopCartList",
@@ -68,7 +71,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["alreadyShoppingFood"]),
+    ...mapState(["alreadyShoppingFood", "selectionCityGeo", "currentShopId"]),
   },
   methods: {
     minus(index) {
@@ -103,6 +106,19 @@ export default {
       });
       this.total();
     },
+    // async confirm() {
+    //   //下订单
+    //   const { user_id: userId } = JSON.parse(localStorage.getItem("userInfo"));
+    //   const orderInfo = {
+    //     address_id: this.currentShopId + 1,
+    //     restaurant_id: this.currentShopId + 2,
+
+    //     geohash: this.selectionCityGeo,
+    //     entities: this.alreadyShoppingFood,
+    //   };
+    //   let cartId = this.currentShopId;
+    //   await placeOrders(orderInfo, userId, cartId);
+    // },
   },
   mounted() {
     this.total();
@@ -151,7 +167,9 @@ export default {
       }
       .text {
         h4 {
+          width: 100%;
           margin-bottom: 0.75rem;
+          @include textOverFlow();
         }
         flex: 0 1 auto;
         width: calc(100% - 6rem);

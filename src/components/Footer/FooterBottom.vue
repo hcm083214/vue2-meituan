@@ -1,7 +1,7 @@
 <!--
  * @Author: 黄灿民
  * @Date: 2020-12-12 10:23:28
- * @LastEditTime: 2020-12-12 14:57:47
+ * @LastEditTime: 2021-01-02 13:53:08
  * @LastEditors: 黄灿民
  * @Description: 底部栏
  * @FilePath: \app\src\components\Footer\FooterBottom.vue
@@ -14,23 +14,25 @@
       </svg>
     </div>
     <div class="footer-item">
-        <svg class="icon big color" aria-hidden="true">
-          <use xlink:href="#icon-faxian"></use>
-        </svg>
+      <svg class="icon big color" aria-hidden="true">
+        <use xlink:href="#icon-faxian"></use>
+      </svg>
       <span class="describe">发现</span>
     </div>
     <div class="footer-item">
       <svg class="icon color" aria-hidden="true">
         <use xlink:href="#icon-xiaoxi2"></use>
       </svg>
-      <span class="describe">消息</span>
+      <span class="describe">订单</span>
     </div>
-    <div class="footer-item">
-      <svg class="icon color" aria-hidden="true">
-        <use xlink:href="#icon-yonghu"></use>
-      </svg>
-      <span class="describe">我的</span>
-    </div>
+    <router-link :to="{ name: 'user' }">
+      <div class="footer-item">
+        <svg class="icon color" aria-hidden="true">
+          <use xlink:href="#icon-yonghu"></use>
+        </svg>
+        <span class="describe">我的</span>
+      </div>
+    </router-link>
   </footer>
 </template>
 
@@ -61,13 +63,13 @@ export default {
     text-align: center;
     @include wh(25%, 2.5rem);
     float: left;
-    @include flex(center,center);
+    @include flex(center, center);
     flex-direction: column;
     .describe {
       @include sizeColor(0.65rem, #000);
     }
-    .color{
-      @include sizeColor(1.25rem,#333)
+    .color {
+      @include sizeColor(1.25rem, #333);
     }
   }
 }

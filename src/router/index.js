@@ -1,7 +1,7 @@
 /*
  * @Author: 黄灿民
  * @Date: 2020-12-05 14:50:48
- * @LastEditTime: 2021-01-01 18:11:08
+ * @LastEditTime: 2021-01-02 19:44:31
  * @LastEditors: 黄灿民
  * @Description: 
  * @FilePath: \app\src\router\index.js
@@ -88,6 +88,14 @@ const routes = [
     }
   },
   {
+    path: '/shoppayment',
+    name: 'shoppayment',
+    component: () => import('@/views/Merchant/ShopPayment.vue'),
+    meta: {
+      auth: true
+    }
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import('@/views/Login/Login.vue')
@@ -96,8 +104,36 @@ const routes = [
     path: '/resset',
     name: 'resset',
     component: () => import('@/views/Login/Resset.vue')
+  },
+  {
+    path: '/user',
+    name: 'user',
+    component: () => import('@/views/User/User.vue')
+  },
+  {
+    path: '/userdetail',
+    name: 'userdetail',
+    component: () => import('@/views/User/UserDetail/UserDetail.vue'),
+    meta: {
+      auth: true
+    }
+  },
+  {
+    path: '/deliveryaddress',
+    name: 'deliveryaddress',
+    component: () => import('@/views/User/UserDetail/DeliveryAddress.vue'),
+    meta: {
+      auth: true
+    }
+  },
+  {
+    path: '/addaddress',
+    name: 'addaddress',
+    component: () => import('@/views/User/UserDetail/AddAddress.vue'),
+    meta: {
+      auth: true
+    }
   }
-
 
 ]
 

@@ -1,7 +1,7 @@
 /*
  * @Author: 黄灿民
  * @Date: 2020-12-07 16:01:17
- * @LastEditTime: 2020-12-31 22:42:03
+ * @LastEditTime: 2021-01-03 21:14:46
  * @LastEditors: 黄灿民
  * @Description: api接口
  * @FilePath: \app\src\server\index.js
@@ -105,7 +105,6 @@ export async function shopList(latitude, longitude, option) {
             'delivery_mode[]': options.delivery_mode + supportStr
         }
     });
-    // console.log("🚀 ~ file: index.js ~ line 102 ~ result", result, shopListData)
     return { data: shopListData };
 }
 
@@ -191,6 +190,29 @@ export async function getRatingList(restaurant_id) {
 }
 
 /**
+ * @description: 获取收货地址列表
+ * @param {*} user_id
+ * @return {*}
+ */
+export async function getAddress(user_id) {
+    const result = await httpRequest.get('v1/users/' + user_id + '/addresses');
+    return result;
+}
+
+/**
+ * @description: 添加收获地址
+ * @param {*} addressInfo
+ * @param {*} userId
+ * @return {*}
+ */
+export async function postAddAddress(addressInfo, userId) {
+    const result = await httpRequest.post('/v1/users/' + userId + '/addresses', {
+        ...addressInfo
+    })
+    return result;
+}
+
+/**
  * @description: 加入购物车
  * @param {string} geohash
  * @param {array} entities
@@ -217,11 +239,24 @@ export async function checkout(geohash, entities, restaurant_id) {
 }
 
 /**
+ * @description: 下订单
+ * @param {*} orderInfo
+ * @param {*} userId
+ * @return {*}
+ */
+export async function placeOrders(orderInfo, userId,cartId){
+    const result = await httpRequest.post('/v1/users/' + userId + '/carts'+ cartId +'/orders', {
+        ...orderInfo
+    })
+    return result;
+}
+
+/**
  * @description: 获得图片验证码
  */
-export async function getcaptchas(){
-   const result = await httpRequest.post('/v1/captchas');
-   return result;
+export async function getcaptchas() {
+    const result = await httpRequest.post('/v1/captchas');
+    return result;
 }
 
 /**
@@ -231,8 +266,8 @@ export async function getcaptchas(){
  * @param {*} captcha_code
  * @return {*}
  */
-export async function accountLogin(username, password, captcha_code){
-    const result = await httpRequest.post('/v2/login',{
+export async function accountLogin(username, password, captcha_code) {
+    const result = await httpRequest.post('/v2/login', {
         username, password, captcha_code
     })
     return result;
@@ -247,9 +282,17 @@ export async function accountLogin(username, password, captcha_code){
  * @param {*} captcha_code
  * @return {*}
  */
-export async function changePassword(username, oldpassWord, newpassword, confirmpassword, captcha_code){
-    const result = await httpRequest.post('/v2/changepassword',{
+export async function changePassword(username, oldpassWord, newpassword, confirmpassword, captcha_code) {
+    const result = await httpRequest.post('/v2/changepassword', {
         username, oldpassWord, newpassword, confirmpassword, captcha_code
     })
+    return result;
+}
+
+/**
+ * @description: 退出登录
+ */
+export async function signout() {
+    const result = await httpRequest.get('/v2/signout');
     return result;
 }

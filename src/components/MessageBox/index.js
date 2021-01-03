@@ -1,7 +1,7 @@
 /*
  * @Author: 黄灿民
  * @Date: 2020-12-08 11:32:40
- * @LastEditTime: 2021-01-01 15:28:46
+ * @LastEditTime: 2021-01-02 18:18:34
  * @LastEditors: 黄灿民
  * @Description: 
  * @FilePath: \app\src\components\MessageBox\index.js
@@ -17,9 +17,9 @@ const defaults = {
 const asyncObj = {};
 function defaultCallback(action) {
     if (action === 'confirm') {
-        asyncObj.resolve(action)
+        asyncObj.resolve(true)
     } else if (action === 'cancel') {
-        asyncObj.reject(action)
+        asyncObj.resolve(false)
     }
 }
 let cmp;//弹窗组件

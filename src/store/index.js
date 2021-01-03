@@ -1,7 +1,7 @@
 /*
  * @Author: 黄灿民
  * @Date: 2020-12-05 14:50:48
- * @LastEditTime: 2021-01-01 10:48:03
+ * @LastEditTime: 2021-01-01 20:37:16
  * @LastEditors: 黄灿民
  * @Description: 
  * @FilePath: \app\src\store\index.js
@@ -14,10 +14,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     selectionCityGeo: '',
-    alreadyShoppingFood: [],
-    currentShopId: 1,
+    alreadyShoppingFood: [],//加入购物车商品
+    currentShopId: 1,//当前选择商铺id
     topHeaderHeight: 0,
-    userInfo:{}
+    userInfo:{}//用户信息
   },
   mutations: {
     saveUserInfo(state,payload){

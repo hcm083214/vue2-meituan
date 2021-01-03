@@ -1,7 +1,7 @@
 <!--
  * @Author: 黄灿民
  * @Date: 2020-12-30 22:00:15
- * @LastEditTime: 2021-01-01 15:34:04
+ * @LastEditTime: 2021-01-02 15:30:55
  * @LastEditors: 黄灿民
  * @Description: 登录页
  * @FilePath: \app\src\views\Login\Login.vue
@@ -113,15 +113,16 @@ export default {
       if (this.userInfo.username) {
         localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
         this.$store.commit("saveUserInfo", this.userInfo);
-        const redirect = this.$router.query && this.$router.query.redirect;
+        const redirect = this.$route.query && this.$route.query.redirect;
+        console.log("🚀 ~ file: Login.vue ~ line 117 ~ login ~ redirect", redirect)
         redirect
-          ? this.$router.push(redirect)
+          ? this.$router.push({ path: redirect })
           : this.$router.push({ name: "Home" });
       } else {
         msgBox({
-          type:'alert',
-          title:'登录失败',
-          msg:this.userInfo.message,
+          type: "alert",
+          title: "登录失败",
+          msg: this.userInfo.message,
         });
       }
     },
