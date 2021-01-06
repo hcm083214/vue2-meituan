@@ -1,7 +1,7 @@
 /*
  * @Author: 黄灿民
  * @Date: 2020-12-07 23:12:57
- * @LastEditTime: 2021-01-05 22:03:15
+ * @LastEditTime: 2021-01-06 09:13:38
  * @LastEditors: 黄灿民
  * @Description: 通用功能函数
  * @FilePath: \vue2-meituan\src\assets\js\util.js
@@ -15,26 +15,26 @@ import messageBox from "@/components/MessageBox/index.js";
  */
 export function mergeLocation({ geohash, city }, geoInline) {
     return new Promise(resolve => {
-        // if (geoInline == geohash) {
-        //     // console.log('地址一样')
-        //     resolve(geohash);
-        // } else {
-        messageBox(
-            {
-                type: 'confirm',
-                title: `检测到您目前所在城市是${city}`,
-                msg: '是否要切换'
-            },
-        ).then((res) => {
-            if (res) {
-                console.log('切换到定位')
-                resolve(geohash);
-            } else {
-                console.log('切换到自选')
-                resolve(geoInline);
-            }
-        })
-        // }
+        if (geoInline == geohash) {
+            console.log('地址一样')
+            resolve(geohash);
+        } else {
+            messageBox(
+                {
+                    type: 'confirm',
+                    title: `检测到您目前所在城市是${city}`,
+                    msg: '是否要切换'
+                },
+            ).then((res) => {
+                if (res) {
+                    console.log('切换到定位')
+                    resolve(geohash);
+                } else {
+                    console.log('切换到自选')
+                    resolve(geoInline);
+                }
+            })
+        }
     })
 
 }

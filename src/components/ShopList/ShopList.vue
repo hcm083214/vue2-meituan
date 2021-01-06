@@ -1,10 +1,10 @@
 <!--
  * @Author: 黄灿民
  * @Date: 2020-12-10 16:03:04
- * @LastEditTime: 2020-12-28 18:44:18
+ * @LastEditTime: 2021-01-06 09:23:19
  * @LastEditors: 黄灿民
  * @Description: 商品列表
- * @FilePath: \app\src\components\ShopList\ShopList.vue
+ * @FilePath: \vue2-meituan\src\components\ShopList\ShopList.vue
 -->
 <template>
   <section
@@ -127,10 +127,11 @@ export default {
       }
     }
     .shop-list-item-detail {
-      // width: 75%;
+      width: 75%;
       flex: 0 1 auto;
       padding-top: 0.2rem;
       padding-left: 0.5rem;
+      padding-right: 1rem;
       @include sizeColor(0.75rem, #000);
       .list-title {
         width: 6rem;

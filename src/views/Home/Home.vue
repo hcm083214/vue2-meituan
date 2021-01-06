@@ -1,7 +1,7 @@
 <!--
  * @Author: 黄灿民
  * @Date: 2020-12-05 15:16:19
- * @LastEditTime: 2021-01-05 22:53:46
+ * @LastEditTime: 2021-01-06 09:28:10
  * @LastEditors: 黄灿民
  * @Description: 首页：定位
  * @FilePath: \vue2-meituan\src\views\Home\Home.vue
@@ -105,11 +105,13 @@ export default {
       const geo = JSON.parse(localStorage.getItem("geo")); //保存定位的结果
       if (this.geoInline) {
         this.geoCity = await mergeLocation(geo, this.geoInline);
+      }else{
+        this.geoCity = geo.geohash;
       }
       const address = await msiteAddress(this.geoCity);
       this.city = address.city;
       this.$store.commit("changeGeo", this.geoCity);
-      this.$router.push({
+      (!this.geoInline) && this.$router.push({
         ...this.$route,
         params: {
           city: this.geoCity,
