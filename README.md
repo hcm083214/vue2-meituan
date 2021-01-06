@@ -84,6 +84,8 @@ flex 3栏布局，常用项写在组件中，slot 插槽进行内容自定义
 
 vue的版本是vue-awesome-swiper
 
+<img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102135619770.png'>
+
 ![image-20210102135619770](\src\assets\img\image-20210102135619770.png)
 
 ### 服务列表详情
@@ -98,6 +100,8 @@ js功能：下拉菜单：根据美食分类，排序方式，筛选条件，来
 
 下拉菜单，完全掌握css的定位相关知识，包括position：relative/absolute/fixed
 
+<img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102135659340.png'>
+
 ![image-20210102135659340](\src\assets\img\image-20210102135659340.png)
 
 
@@ -111,6 +115,8 @@ js功能：下拉菜单：根据美食分类，排序方式，筛选条件，来
 经典图文混排，左图，右边商品信息详情
 
 js功能：请求数据，渲染列表
+
+<img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102135751965.png'>
 
 ![image-20210102135751965](\src\assets\img\image-20210102135751965.png)
 
@@ -138,6 +144,8 @@ js功能：请求数据，渲染列表
 
 内容页导航栏有吸顶效果，对应内容到达导航栏，改变active状态
 
+<img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102135832394.png'>
+
 ![image-20210102135832394](\src\assets\img\image-20210102135832394.png)
 
 #### 优惠菜品详情
@@ -148,6 +156,8 @@ js功能：请求数据，渲染列表
 
 添加到购物车逻辑：先判断是否登录，如果没登录跳转到登录页面；如果登录，将要添加到购物车信息发送给后端，从后端得到的数据保存在vuex中
 
+<img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102135907176.png'>
+
 ![image-20210102135907176](\src\assets\img\image-20210102135907176.png)
 
 #### 店铺详情
@@ -157,6 +167,8 @@ js功能：请求数据，渲染列表
 点击商铺列表详情页面的**更多信息**，跳转到店铺详情，路由query保存商铺id
 
 商铺详情：根据商铺id，请求数据，渲染商铺详情列表
+
+<img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102140023060.png'>
 
 ![image-20210102140023060](\src\assets\img\image-20210102140023060.png)
 
@@ -170,6 +182,8 @@ js功能：请求数据，渲染列表
 
 图片懒加载
 
+<img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102140105801.png'>
+
 ![image-20210102140105801](\src\assets\img\image-20210102140105801.png)
 
 ### 购物车列表详情
@@ -180,11 +194,15 @@ js功能：请求数据，渲染列表
 
 通过+ - 按钮调整选择数量，全选按钮，单选按钮
 
+<img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102140151246.png'>
+
 ![image-20210102140151246](\src\assets\img\image-20210102140151246.png)
 
 ### 付款页面
 
 付款页面15min倒计时，支付方式选择
+
+<img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102140222956.png'>
 
 ![image-20210102140222956](\src\assets\img\image-20210102140222956.png)
 
@@ -196,11 +214,13 @@ js功能：请求数据，渲染列表
 
 密码有显示和隐藏功能
 
+<img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102140406543.png'>
+
 ![image-20210102140406543](\src\assets\img\image-20210102140406543.png)
 
 ### 密码重置
 
-
+<img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102140745058.png'>
 
 ![image-20210102140745058](\src\assets\img\image-20210102140745058.png)
 
