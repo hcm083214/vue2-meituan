@@ -1,10 +1,10 @@
 /*
  * @Author: 黄灿民
  * @Date: 2020-12-07 23:12:57
- * @LastEditTime: 2021-01-01 15:12:41
+ * @LastEditTime: 2021-01-05 22:03:15
  * @LastEditors: 黄灿民
  * @Description: 通用功能函数
- * @FilePath: \app\src\assets\js\util.js
+ * @FilePath: \vue2-meituan\src\assets\js\util.js
  */
 import messageBox from "@/components/MessageBox/index.js";
 /**
@@ -15,24 +15,26 @@ import messageBox from "@/components/MessageBox/index.js";
  */
 export function mergeLocation({ geohash, city }, geoInline) {
     return new Promise(resolve => {
-        if (geoInline == geohash) {
-            // console.log('地址一样')
-            resolve(geohash);
-        } else {
-            messageBox(
-                {
-                    type:'confirm',
-                    title: `检测到您目前所在城市是${city}`,
-                    msg: '是否要切换'
-                },
-            ).then(() => {
-                // console.log('切换到定位')
+        // if (geoInline == geohash) {
+        //     // console.log('地址一样')
+        //     resolve(geohash);
+        // } else {
+        messageBox(
+            {
+                type: 'confirm',
+                title: `检测到您目前所在城市是${city}`,
+                msg: '是否要切换'
+            },
+        ).then((res) => {
+            if (res) {
+                console.log('切换到定位')
                 resolve(geohash);
-            }, () => {
-                // console.log('不切换到定位')
+            } else {
+                console.log('切换到自选')
                 resolve(geoInline);
-            })
-        }
+            }
+        })
+        // }
     })
 
 }
@@ -63,7 +65,7 @@ export function isArrival(tarEle, sourEle) {
     const { top: tarTop, height: tarHeight } = tarEle.getBoundingClientRect();
     // const { top: sourTop, height: SourHeight  } = sourEle.getBoundingClientRect();
     const { top: sourTop, } = sourEle.getBoundingClientRect();
-    if (sourTop < tarTop + tarHeight +1) {
+    if (sourTop < tarTop + tarHeight + 1) {
         isArrivalTep = true;
     }
     return isArrivalTep;
@@ -75,8 +77,8 @@ export function isArrival(tarEle, sourEle) {
  * @param {*} waitTime
  */
 export function debounce(fn, waitTime) {
-    
-    let timer=null;
+
+    let timer = null;
     return function () {
         clearTimeout(timer);
         timer = setTimeout(() => {

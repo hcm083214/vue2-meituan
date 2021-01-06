@@ -1,13 +1,20 @@
+# 前言
+
+本项目在github开源项目[vue-ele](https://github.com/bailicangdu/vue2-elm)基础上进行改写，新增功能如下
+
+1. 第一次载入界面实现自动定位，如果定位不准可以
+
 # vue2 仿美团项目
 
-技术栈：vue2.x + vuex + vue-router + svg + scss + swiper
+技术栈：vue2.x + vuex + vue-router + svg + scss + swiper + flex
+
+后端代码：后端代码来自
 
 ## todoList
 
 - [ ] rem响应式布局
 - [ ] 公用组件---顶部
 - [ ] 公用组件---弹窗
-- [ ] 公用组件---导航条吸顶效果
 - [ ] 公用组件---评分
 - [ ] 定位功能，城市切换
 - [ ] 首页服务列表
@@ -193,3 +200,6 @@ js功能：请求数据，渲染列表
 
 
 ![image-20210102140745058](.\src\assets\img\image-20210102140745058.png)
+
+### 用户界面
+

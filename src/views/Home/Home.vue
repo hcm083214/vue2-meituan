@@ -1,10 +1,10 @@
 <!--
  * @Author: 黄灿民
  * @Date: 2020-12-05 15:16:19
- * @LastEditTime: 2021-01-01 14:20:37
+ * @LastEditTime: 2021-01-05 22:53:46
  * @LastEditors: 黄灿民
  * @Description: 首页：定位
- * @FilePath: \app\src\views\Home\Home.vue
+ * @FilePath: \vue2-meituan\src\views\Home\Home.vue
 -->
 <template>
   <div>
@@ -50,6 +50,8 @@ export default {
       city: "定位",
       shopListTitle: "猜你喜欢",
       shopLists: [],
+      geoInline: "", //用户选择的城市的经纬度
+      geoCity: "", //保存用户最终确认的定位城市的经纬度（系统定位和用户选择二选一的结果）
     };
   },
   watch: {
@@ -59,14 +61,29 @@ export default {
     },
   },
   computed: {
-    ...mapState(["selectionCityGeo"]),
+    ...mapState(["selectionCityGeo"]), //保存在localStorage中最终的定位城市信息（系统定位和用户选择二选一的结果）
   },
   methods: {
+    location() {
+      if ("geolocation" in navigator) {
+        /* 地理位置服务可用 */
+        navigator.geolocation.getCurrentPosition(
+          this.getLocationSuccess,
+          this.getLocationFail
+        );
+      } else {
+        /* 地理位置服务不可用 */
+        this.$router.push({
+          name: "location",
+        });
+      }
+    },
     async getLocationSuccess({ coords: { latitude, longitude } }) {
       const geohash = latitude + "," + longitude;
       const address = await msiteAddress(geohash);
       this.city = address.city;
       localStorage.setItem("geo", JSON.stringify(address));
+      this.getShopListsData();
     },
     getLocationFail() {
       this.$router.push({
@@ -83,46 +100,27 @@ export default {
       const shopLists = await shopList(latitude, longitude);
       this.shopLists = shopLists.data;
     },
+    async changeLocationCity() {
+      this.geoInline = this.$route.params.city; //用户选择的城市的经纬度
+      const geo = JSON.parse(localStorage.getItem("geo")); //保存定位的结果
+      if (this.geoInline) {
+        this.geoCity = await mergeLocation(geo, this.geoInline);
+      }
+      const address = await msiteAddress(this.geoCity);
+      this.city = address.city;
+      this.$store.commit("changeGeo", this.geoCity);
+      this.$router.push({
+        ...this.$route,
+        params: {
+          city: this.geoCity,
+        },
+      });
+    },
   },
   async mounted() {
-    const geo = JSON.parse(localStorage.getItem("geo"));
-    if (geo) {
-      this.getShopListsData();
-      const geoInline = this.$route.params.city;
-      let geoCity;
-      if (this.selectionCityGeo) {
-        geoCity = this.selectionCityGeo;
-      } else {
-        geoCity = await mergeLocation(geo, geoInline);
-      }
-      const address = await msiteAddress(geoCity);
-      this.city = address.city;
-      if (geoCity == geoInline) {
-        this.$store.commit("changeGeo", geoCity);
-        this.getShopListsData();
-        this.$router.push({
-          ...this.$route,
-          params: {
-            city: geoCity,
-          },
-        });
-        return;
-      }
-      this.$store.commit("changeGeo", geo.geohash);
-    } else {
-      if ("geolocation" in navigator) {
-        /* 地理位置服务可用 */
-        navigator.geolocation.getCurrentPosition(
-          this.getLocationSuccess,
-          this.getLocationFail
-        );
-      } else {
-        /* 地理位置服务不可用 */
-        this.$router.push({
-          name: "location",
-        });
-      }
-    }
+    this.location(); //定位
+    this.changeLocationCity();
+    this.getShopListsData();
   },
 };
 </script>

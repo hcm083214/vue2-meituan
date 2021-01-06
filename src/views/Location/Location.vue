@@ -1,10 +1,10 @@
 <!--
  * @Author: 黄灿民
  * @Date: 2020-12-06 23:46:45
- * @LastEditTime: 2020-12-09 10:45:52
+ * @LastEditTime: 2021-01-04 20:40:55
  * @LastEditors: 黄灿民
  * @Description: 城市定位
- * @FilePath: \app\src\views\Location\Location.vue
+ * @FilePath: \vue2-meituan\src\views\Location\Location.vue
 -->
 <template>
   <div class="location">
