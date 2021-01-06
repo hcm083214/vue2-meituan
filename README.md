@@ -67,7 +67,10 @@ flex 3栏布局，常用项写在组件中，slot 插槽进行内容自定义
    1. 获得定位信息，判断当前城市与定位城市是否一致，不一致是否进行修改
    2. 修改城市，跳转回首页
 3. 重新切换到首页
+   
    1. 判断当前城市与定位城市是否一致，不一致是否进行修改
+   
+      <img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102135450857.png'>
 
 ![image-20210102135450857](\src\assets\img\image-20210102135450857.png)
 
