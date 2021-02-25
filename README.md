@@ -13,6 +13,18 @@
 
 技术栈：vue2.x + vuex + vue-router + svg + scss + swiper + flex
 
+```js
+    "axios": "^0.21.0",
+    "swiper": "^6.4.0",
+    "vue": "^2.6.11",
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-router": "^3.2.0",
+    "vuex": "^3.4.0",
+    "sass": "^1.26.5",
+```
+
+
+
 ## todoList
 
 - [x] rem响应式布局
@@ -28,6 +40,80 @@
 - [x] 用户界面
 - [ ] 商品搜索
 - [ ] 定位城市搜素
+
+## 目录结构
+
+```js
+|-- src
+    |-- App.vue
+    |-- main.js
+    |-- assets
+    |   |-- logo.png
+    |   |-- api # 后端数据（后端接口无法返回数据临时加的）
+    |   |-- css
+    |   |   |-- common.scss # 公共样式
+    |   |   |-- mixin.scss # 抽离样式
+    |   |   |-- swiper-bundle.min.css
+    |   |-- img
+    |   |-- js
+    |       |-- iconfont.js # iconfont图标
+    |       |-- mixin.js # 图片路径处理
+    |       |-- rem.js # html font-size设置（自适应屏幕大小）
+    |       |-- util.js # 公用代码
+    |-- components # 公用组件
+    |   |-- Footer 
+    |   |   |-- FooterBottom.vue # 底部栏
+    |   |-- Header 
+    |   |   |-- HeaderTop.vue # 头部栏
+    |   |-- MessageBox # 弹框组件
+    |   |   |-- index.js
+    |   |   |-- MessageBox.vue
+    |   |-- Rank 
+    |   |   |-- Rank.vue # 评分组件
+    |   |-- ShopCart 
+    |   |   |-- ShopCart.vue # 购物车悬浮框
+    |   |-- ShopList 
+    |       |-- ShopList.vue # 商铺列表
+    |-- router
+    |   |-- index.js
+    |-- server
+    |   |-- index.js  # 后端api接口
+    |-- store
+    |   |-- index.js
+    |-- views
+        |-- Home
+        |   |-- Home.vue # 首页
+        |   |-- Service.vue # 首页服务列表
+        |-- Location
+        |   |-- Location.vue # 定位页
+        |-- Login
+        |   |-- Login.vue # 登录页
+        |   |-- Resset.vue # 密码重置页
+        |-- Merchant # 商铺
+        |   |-- ServiceList.vue # 服务列表详情页
+        |   |-- ShopCartList.vue # 购物车详情页
+        |   |-- ShopDetail.vue # 商铺详情页
+        |   |-- ShopPayment.vue # 支付页
+        |   |-- TakeOutDetail.vue # 商铺外卖详情页
+        |   |-- ShopDetail
+        |   |   |-- ShopComment.vue # 商铺评价
+        |   |   |-- ShopDescribe.vue # 商铺页头部---商铺描述
+        |   |   |-- ShopInfomation.vue # 商铺信息展示
+        |   |   |-- ShopRecommend.vue # 商铺推荐菜品列表
+        |   |   |-- RecommendDetail
+        |   |       |-- RecommendDetail.vue # 推荐菜品详情页
+        |   |-- TakeOutDetail
+        |       |-- comment.vue # 外卖评价
+        |       |-- Menu.vue # 外卖菜单菜品
+        |-- User
+            |-- User.vue # 用户页面
+            |-- UserDetail
+                |-- AddAddress.vue # 新增地址
+                |-- DeliveryAddress.vue # 派送地址
+                |-- UserDetail.vue # 用户详情页
+```
+
+
 
 ## 实现思路
 
@@ -79,7 +165,7 @@ flex 3栏布局，常用项写在组件中，slot 插槽进行内容自定义
    
       <img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102135450857.png'>
 
-![image-20210102135450857](\src\assets\img\image-20210102135450857.png)
+![image-20210102135450857](.\src\assets\img\image-20210102135450857.png)
 
 
 
@@ -93,7 +179,7 @@ vue的版本是vue-awesome-swiper
 
 <img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102135619770.png'>
 
-![image-20210102135619770](\src\assets\img\image-20210102135619770.png)
+![image-20210102135619770](.\src\assets\img\image-20210102135619770.png)
 
 ### 服务列表详情
 
@@ -109,7 +195,7 @@ js功能：下拉菜单：根据美食分类，排序方式，筛选条件，来
 
 <img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102135659340.png'>
 
-![image-20210102135659340](\src\assets\img\image-20210102135659340.png)
+![image-20210102135659340](.\src\assets\img\image-20210102135659340.png)
 
 
 
@@ -125,7 +211,7 @@ js功能：请求数据，渲染列表
 
 <img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102135751965.png'>
 
-![image-20210102135751965](\src\assets\img\image-20210102135751965.png)
+![image-20210102135751965](.\src\assets\img\image-20210102135751965.png)
 
 
 
@@ -153,7 +239,7 @@ js功能：请求数据，渲染列表
 
 <img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102135832394.png'>
 
-![image-20210102135832394](\src\assets\img\image-20210102135832394.png)
+![image-20210102135832394](.\src\assets\img\image-20210102135832394.png)
 
 #### 优惠菜品详情
 
@@ -165,7 +251,7 @@ js功能：请求数据，渲染列表
 
 <img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102135907176.png'>
 
-![image-20210102135907176](\src\assets\img\image-20210102135907176.png)
+![image-20210102135907176](.\src\assets\img\image-20210102135907176.png)
 
 #### 店铺详情
 
@@ -177,7 +263,7 @@ js功能：请求数据，渲染列表
 
 <img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102140023060.png'>
 
-![image-20210102140023060](\src\assets\img\image-20210102140023060.png)
+![image-20210102140023060](.\src\assets\img\image-20210102140023060.png)
 
 #### 店铺外卖
 
@@ -191,7 +277,7 @@ js功能：请求数据，渲染列表
 
 <img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102140105801.png'>
 
-![image-20210102140105801](\src\assets\img\image-20210102140105801.png)
+![image-20210102140105801](.\src\assets\img\image-20210102140105801.png)
 
 ### 购物车列表详情
 
@@ -203,7 +289,7 @@ js功能：请求数据，渲染列表
 
 <img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102140151246.png'>
 
-![image-20210102140151246](\src\assets\img\image-20210102140151246.png)
+![image-20210102140151246](.\src\assets\img\image-20210102140151246.png)
 
 ### 付款页面
 
@@ -211,7 +297,7 @@ js功能：请求数据，渲染列表
 
 <img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102140222956.png'>
 
-![image-20210102140222956](\src\assets\img\image-20210102140222956.png)
+![image-20210102140222956](.\src\assets\img\image-20210102140222956.png)
 
 ### 登录页
 
@@ -223,13 +309,13 @@ js功能：请求数据，渲染列表
 
 <img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102140406543.png'>
 
-![image-20210102140406543](\src\assets\img\image-20210102140406543.png)
+![image-20210102140406543](.\src\assets\img\image-20210102140406543.png)
 
 ### 密码重置
 
 <img src='https://github.com/hcm083214/vue2-meituan/blob/main/src/assets/img/image-20210102140745058.png'>
 
-![image-20210102140745058](\src\assets\img\image-20210102140745058.png)
+![image-20210102140745058](.\src\assets\img\image-20210102140745058.png)
 
 ### 用户界面
 
